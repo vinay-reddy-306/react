@@ -1,0 +1,32 @@
+{
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:prettier/recommended",
+      "plugin:react/recommended"
+    ],
+    "settings": {
+      "react": {
+        "version": "^19.0.0"  // Set this to match your React version
+      }
+    },
+    "rules": {
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          "tabWidth": 2,
+          "useTabs": false,
+          "semi": true,
+          "singleQuote": true,
+          "trailingComma": "es5",
+          "printWidth": 80,
+          "bracketSpacing": true
+        }
+      ],
+      "no-unused-vars": "error",
+      "no-console": "warn"
+    }
+}
+  
