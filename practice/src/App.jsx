@@ -1,5 +1,5 @@
-import './App.css';
-import Timer from './react-minis/timer';
+import "./App.css";
+import Timer from "./react-minis/timer";
 
 function App() {
   return (

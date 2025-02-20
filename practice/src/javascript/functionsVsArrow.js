@@ -4,12 +4,12 @@
  * Arrow Functions – Introduced in ES6 (=> syntax).
  * Arrow functions provide a more concise syntax and behave differently in `this` binding, arguments object, and return statements.
  */
- 
+
 /** SYNTAX DIFFERENCES */
 function greet(name) {
-    return "Hello, " + name;
-  }
-  
+  return "Hello, " + name;
+}
+
 console.log(greet("Alice")); // Hello, Alice
 
 // Arrow functions
@@ -21,29 +21,29 @@ console.log(greet("Alice")); // Hello, Alice
 // 🔹 If there’s only one parameter, parentheses () are optional.
 // 🔹 If the function contains a single expression, {} and return are optional.
 
-/**  this KEYWORD BEHAVIOUR 
+/**  this KEYWORD BEHAVIOUR
  * ✅ Traditional Functions Have Their Own `this`
  * In traditional functions, `this` depends on how the function is called.
  */
 const user = {
-    name: "Alice",
-    greet: function() {
-      console.log("Hello, " + this.name);
-    }
+  name: "Alice",
+  greet: function () {
+    console.log("Hello, " + this.name);
+  },
 };
-  
+
 user.greet(); // ✅ "Hello, Alice"
 // `this` inside greet refers to the user object.
 
 // ❌ Problem with `this` in Traditional Functions
 // If you use a traditional function inside a method, `this` may not behave as expected.
 const test = {
-    name: "Alice",
-    greet: function() {
-      setTimeout(function() {
-        console.log("Hello, " + this.name); // ❌ Undefined
-      }, 1000);
-    }
+  name: "Alice",
+  greet: function () {
+    setTimeout(function () {
+      console.log("Hello, " + this.name); // ❌ Undefined
+    }, 1000);
+  },
 };
 test.greet();
 // this.name is `undefined` because setTimeout runs in the global scope (window in browsers, global in Node.js).
@@ -51,12 +51,12 @@ test.greet();
 // ✅ Arrow Functions Inherit `this` from Their Lexical Scope
 // Arrow functions do not have their own `this`; they inherit it from the surrounding function.
 const sample = {
-    name: "Alice",
-    greet: function() {
-      setTimeout(() => {
-        console.log("Hello, " + this.name); // ✅ Works! "Hello, Alice"
-      }, 1000);
-    }
+  name: "Alice",
+  greet: function () {
+    setTimeout(() => {
+      console.log("Hello, " + this.name); // ✅ Works! "Hello, Alice"
+    }, 1000);
+  },
 };
 sample.greet();
 
@@ -89,7 +89,7 @@ showArguments(1, 2, 3); // ✅ [1, 2, 3]
 
 /**  4. new Keyword Behavior
  * ✅ Traditional Functions Can Be Used as Constructors
- */ 
+ */
 function Person(name) {
   this.name = name;
 }
@@ -108,7 +108,7 @@ const tom = new Person("Tom"); // ❌ TypeError: Person is not a constructor
 
 /** 5. Implicit Return Behavior
  * ✅ Traditional Functions Require return
- */ 
+ */
 function add(a, b) {
   return a + b;
 }
@@ -129,14 +129,14 @@ const add = (a, b) => {
 
 /** 6. Handling Object Return
  * ✅ Returning Objects in Traditional Functions
- */ 
+ */
 function getUser() {
   return { name: "Alice", age: 25 };
 }
 console.log(getUser());
 
 // ❌ Arrow Function Needs Parentheses for Object Return
-const getUser = () => { name: "Alice", age: 25 }; // ❌ Undefined
+// const getUser = () => { name: "Alice", age: 25 }; // ❌ Undefined
 
 // ✅ Correct way:
 const getUser = () => ({ name: "Alice", age: 25 });
@@ -145,22 +145,22 @@ console.log(getUser()); // ✅ { name: 'Alice', age: 25 }
 
 /** 7. Practical Use Cases
  * ✅ Use Arrow Functions for Callbacks
- */ 
+ */
 const numbers = [1, 2, 3];
-const doubled = numbers.map(num => num * 2);
+const doubled = numbers.map((num) => num * 2);
 console.log(doubled); // [2, 4, 6]
 
 // ✅ Use Regular Functions for Object Methods
 const person = {
   name: "Alice",
-  greet: function() {
+  greet: function () {
     console.log("Hello, " + this.name);
-  }
+  },
 };
 person.greet(); // ✅ "Hello, Alice"
 
 // ✅ Use Arrow Functions for Short Functions
-const square = x => x * x;
+const square = (x) => x * x;
 console.log(square(4)); // ✅ 16
 
 // ✅ Use Regular Functions for Constructors
@@ -174,4 +174,4 @@ console.log(myCar.brand); // ✅ "Toyota"
  * ✅ Use arrow functions for short, simple functions and when you need lexical this.
  * ✅ Use traditional functions when you need this, arguments, or constructors.
  * ✅ For methods inside objects, use regular functions to correctly handle this.
- */ 
+ */

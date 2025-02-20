@@ -1,8 +1,8 @@
 // NOTE:
 
 /**     Definition  **
- * Hoisting in JavaScript is a behavior where variable and function declarations are 
- * moved ("hoisted") to the top of their scope before code execution. 
+ * Hoisting in JavaScript is a behavior where variable and function declarations are
+ * moved ("hoisted") to the top of their scope before code execution.
  * This means you can use a function or a variable before it is actually declared in the code.
  */
 
@@ -25,8 +25,9 @@ function sayHello() {
 // JavaScript hoists the entire function, so it works even before the declaration.
 
 // Internally, JavaScript interprets it like this:
-function sayHello() { // Hoisted to the top
-    console.log("Hello, World!");
+function sayHello() {
+  // Hoisted to the top
+  console.log("Hello, World!");
 }
 sayHello(); // Works!
 
@@ -39,7 +40,7 @@ console.log(x); // 10
 // JavaScript hoists the declaration (var x;) to the top, but not the assignment (x = 10;).
 
 // Internally, the interpreter reads it as:
-var x;  // Declaration hoisted
+var x; // Declaration hoisted
 console.log(x); // undefined
 x = 10; // Assignment remains in place
 console.log(x); // 10
@@ -62,7 +63,7 @@ console.log(y);
  */
 sayHi(); // ❌ TypeError: sayHi is not a function
 
-var sayHi = function() {
+var sayHi = function () {
   console.log("Hi!");
 };
 // Why? sayHi is hoisted as undefined, so when calling it, JavaScript tries to execute undefined(), which is a TypeError.

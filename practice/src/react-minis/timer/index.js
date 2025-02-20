@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './styles/index.scss';
+import React, { useEffect, useRef, useState } from "react";
+import "./styles/index.scss";
 
 export const Timer = () => {
   const [timer, setTimer] = useState(0);

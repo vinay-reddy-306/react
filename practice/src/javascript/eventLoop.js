@@ -1,5 +1,5 @@
 /**
- * JavaScript is single-threaded, meaning it can only execute one piece of code at a time. 
+ * JavaScript is single-threaded, meaning it can only execute one piece of code at a time.
  * However, JavaScript handles asynchronous operations (e.g., I/O, timers, API calls) efficiently using the Event Loop.
  * The Event Loop is a mechanism that allows JavaScript to handle asynchronous operations without blocking execution.
  */
@@ -58,10 +58,9 @@ End
 /** 3. Web APIs (Handling Asynchronous Code)
  * Certain functions (e.g., setTimeout, fetch, event listeners) are asynchronous.
  * They are handled by Web APIs and do not block execution.
- */ 
+ */
 
-Example:
-console.log("Start");
+Example: console.log("Start");
 
 setTimeout(() => {
   console.log("Timeout Callback");
@@ -84,7 +83,7 @@ Start
 End
 Timeout Callback
 
-*/ 
+*/
 
 /** 4. Callback Queue (Task Queue)
 Callbacks from:
@@ -94,9 +93,8 @@ setInterval
 DOM events
 
 move to the Callback Queue, waiting for execution.
-*/ 
-Example:
-console.log("Start");
+*/
+Example: console.log("Start");
 
 setTimeout(() => console.log("Timeout"), 2000);
 
@@ -107,15 +105,14 @@ Start
 End
 Timeout  (after 2 seconds)
 Even though the timeout is 2 seconds, "End" executes first because synchronous code runs first.
- */ 
+ */
 
 /** 5. Microtask Queue (Higher Priority)
 Microtasks (Promises & queueMicrotask()) execute before the Callback Queue.
- */ 
-Example: 
+ */
 // Promises vs setTimeout
 
-console.log("Start");
+Example: console.log("Start");
 
 setTimeout(() => console.log("setTimeout"), 0);
 
@@ -125,10 +122,10 @@ console.log("End");
 
 // Order of Execution:
 
-Start
-End
-Promise
-setTimeout
+Start;
+End;
+Promise;
+setTimeout;
 
 /** Why?
 console.log("Start") → Executes
@@ -139,25 +136,26 @@ Event Loop: Microtasks (Promise) run before Callback Queue (setTimeout)
 */
 
 // 6. Event Loop in Action
-Example: 
 // Combining Microtasks & Callbacks
-console.log("Start");
+Example: console.log("Start");
 
 setTimeout(() => console.log("setTimeout"), 0);
 
-Promise.resolve().then(() => {
-  console.log("Promise 1");
-  return Promise.resolve();
-}).then(() => console.log("Promise 2"));
+Promise.resolve()
+  .then(() => {
+    console.log("Promise 1");
+    return Promise.resolve();
+  })
+  .then(() => console.log("Promise 2"));
 
 console.log("End");
 // Order of Execution:
 
-Start
-End
-Promise - 1
-Promise - 2
-setTimeout
+Start;
+End;
+Promise - 1;
+Promise - 2;
+setTimeout;
 
 /** Execution Flow:
 Synchronous Code Runs First
@@ -174,7 +172,7 @@ Chained Promise 2 moves to Microtask Queue
 Event Loop Executes Callback Queue
 
 "setTimeout" logs
- */ 
+ */
 
 // 7. Real-World Use Case
 // Fetching Data Asynchronously
@@ -182,8 +180,8 @@ Event Loop Executes Callback Queue
 console.log("Start");
 
 fetch("https://jsonplaceholder.typicode.com/todos/1")
-  .then(response => response.json())
-  .then(data => console.log("Fetched Data:", data));
+  .then((response) => response.json())
+  .then((data) => console.log("Fetched Data:", data));
 
 console.log("End");
 
